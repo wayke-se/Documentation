@@ -54,13 +54,25 @@ curl --location 'https://api.wayke.se/media/v2/image' \
 
 ### **Step 2: Add Image to an Existing Ad**
 
-After uploading the media, the next step is to associate it with an existing vehicle ad. To do this, make a PATCH request to the endpoint `/vehicle/{id}` and include all the required fields in the request body. Provide the obtained URL as `fileUrl` in `ad{}` -> `media[]` -> `fileUrls[]`.
+After uploading the media, the next step is to associate it with an existing vehicle ad. There are two alternatives for this:
+
+1. **Update Vehicle media**
+   - Use the PUT method on the endpoint `/vehicle/{id}/media` to associate the media with an ad. Pass the file URLs in the body of the request.
+   - Documentation Link: [PUT /vehicle/{id}/media](https://api.wayke.se/#tag/VehicleAd/paths/https:~1~1dealer-api.wayke.se~1vehicle~1{id}~1media/put)
+
+2. **Update entire vehicle**
+   - Use the PATCH method on the endpoint `/vehicle/{id}` to update the entire vehicle ad, which is used if there are other data points that need to be updated besides just adding media.
+   - Provide the obtained URL as `fileUrl` in `ad{}` -> `media[]` -> `fileUrls[]`.
 
 To obtain existing data about a vehicle, you can use one of the following endpoints:
 
-- `/vehicle/{branchId}/vehicle/by-registration-number/{registrationNumber}` (https://api.wayketech.se/#tag/VehicleAd/paths/https:~1~1dealer-api.wayketech.se~1vehicle~1{branchId}~1vehicle~1by-registration-number~1{registrationNumber}/get)
-- `/vehicle/{id}/ad` (if you know the Wayke ID) (https://api.wayketech.se/#operation/GetVehicleById)
+- GET `/vehicle/{branchId}/vehicle/by-registration-number/{registrationNumber}`
+  - [GET /vehicle/{branchId}/vehicle/by-registration-number/{registrationNumber}](https://api.wayketech.se/#tag/VehicleAd/paths/https:~1~1dealer-api.wayketech.se~1vehicle~1{branchId}~1vehicle~1by-registration-number~1{registrationNumber}/get)
 
-Use the response from one of these endpoints and map the data to the body of the PATCH request and add the file URL to the `media` object.
+- GET `/vehicle/{id}/ad` (if you know the Wayke ID)
+  - [GET /vehicle/{id}/ad](https://api.wayketech.se/#operation/GetVehicleById)
+
+Use the response from one of these endpoints and map the data to the body of the PATCH request and add the file URLs to the `media` object.
 
 This concludes the documentation for media uploads on the Wayke platform. If you have any questions or require further assistance, please refer to the [Wayke API Documentation](https://api.wayke.se/) or contact our support team.
+
