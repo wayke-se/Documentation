@@ -24,6 +24,12 @@ This section shows the available webhooks and instructions on how to configure t
 
 In addition to the documentation, we also offer ready-made components that you can use to add functionality to your website.
 
+### Search and Display vehicles
+
+Use our Javascript/React component for seach and display vehicles
+
+- [NPM Package](https://www.npmjs.com/package/@wayke-se/components-react)
+
 ### Buy Online
 
 Use our buy online component to implement a "buy online" feature.
