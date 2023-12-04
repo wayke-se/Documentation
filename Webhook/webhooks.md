@@ -126,6 +126,11 @@ Below are the example payloads for each type of webhook event:
                 }
             ]
         }
+    },
+    "subject": {
+        "registrationNumber": "BFB25K",
+        "vehicleIdentificationNumber": "VSSZZZRRRMR043888",
+        "id": "b857d1fe-03f3-4166-b0d7-8e0e8f882c1c"
     }
 }
 ```
