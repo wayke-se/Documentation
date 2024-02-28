@@ -135,62 +135,6 @@ Below are the example payloads for each type of webhook event:
 }
 ```
 
-### New Incoming Vehicle for Purchase
-
-```json
-{
-  "branch": {
-    "id": "1bfec2d5-b3a6-4dda-9c0e-c993d55ca1b0"
-  },
-  "lead": {
-    "id": "db0221ff-ebf0-4610-89ff-91c8e03309d0",
-    "contact": {
-      "firstName": "Firstname",
-      "lastName": "Lastname",
-      "phoneNumber": "0700000000",
-      "email": "test@mail.com"
-    },
-    "metadata": [
-      {
-        "key": "condition",
-        "value": "VeryGood"
-      },
-      {
-        "key": "registrationNumber",
-        "value": "BAM14F"
-      },
-      {
-        "key": "description",
-        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer congue velit nibh, at mollis sapien fermentum sit amet. Ut ut egestas magna, vel pharetra erat"
-      },
-      {
-        "key": "milage",
-        "value": "4000"
-      },
-      {
-        "key": "pricePrediction",
-        "value": "538600"
-      },
-      {
-        "key": "conditionReductionVeryGood",
-        "value": "81.0"
-      },
-      {
-        "key": "conditionReductionGood",
-        "value": "1.0"
-      },
-      {
-        "key": "conditionReductionOk",
-        "value": "1.0"
-      }
-    ],
-    "type": "registrationOfInterestToSell",
-    "createdAt": "2023-11-07T08:19:45.7867015Z"
-  }
-}
-```
-
-
 ### New Incoming Ecom Order
 ```json
 
