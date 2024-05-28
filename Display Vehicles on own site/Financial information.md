@@ -9,10 +9,8 @@ We offer two different solutions for obtaining financial information on a vehicl
 
 2. **New Updated Version (2024)**
    - Each vehicle can carry multiple financial packages from the same or different financial institutions. Each financial institution still provides details on interest, fees, down payment, residual value, and loan length. Additionally, this version supports different interest rates for various down payments and different residual values based on the loan length.
-
-We have created "packages" to present different alternatives to the end customer. This allows a dealer to create two different packages from the same financial institution, showing a short-term financial product with a large down payment and a long-term financial product with a low down payment, helping the customer understand the possibilities. Packages can have locked settings to present fixed offers.
-
-As a dealer, you can also communicate information to the user as text within a package.
+   - We have created "packages" to present different alternatives to the end customer. This allows a dealer to create two different packages from the same financial institution, showing a short-term financial product with a large down payment and a long-term financial product with a low down payment, helping the customer understand the possibilities. Packages can have locked settings to present fixed offers.
+   - As a dealer, you can also communicate information to the user as text within a package.
 
 ## Example API Requests
 
