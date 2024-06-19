@@ -279,7 +279,6 @@ Below are the example payloads for each type of webhook event:
 To effectively use webhooks, your application should:
 
 1. **Listen for POST requests** on the URL specified when setting up the webhook.
-2. **Validate the request** to ensure it comes from Wayke. This typically involves checking a signature in the header against a known public key or shared secret.
-3. **Parse the JSON payload** to extract the relevant data.
-4. **Acknowledge receipt** by responding with a 200 HTTP status code promptly. Otherwise, Wayke may assume delivery failed and retry.
-5. **Process the data** accordingly based on the type of event received.
+2. **Parse the JSON payload** to extract the relevant data.
+3. **Acknowledge receipt** by responding with a 200 HTTP status code promptly. Otherwise, Wayke may assume delivery failed.
+4. **Process the data** accordingly based on the type of event received.
