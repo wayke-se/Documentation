@@ -1,9 +1,8 @@
+# How to Upload Panorama Images to the Platform via API
 
-# Så laddar du upp Panorama-bilder till plattformen via API
+### Step 1: Create a container
 
-### Steg 1: Skapa en container
-
-Först behöver du skapa en container som dina bilder ska ligga i.
+First, you need to create a container to hold your images.
 
 ```bash
 curl --location 'https://api.wayke.se/media/v2/panorama-image' \
@@ -14,12 +13,12 @@ curl --location 'https://api.wayke.se/media/v2/panorama-image' \
 --data-urlencode 'Metadata.SortOrder=0'
 ```
 
-- `Metadata.Purpose`: Syftet med bilderna, t.ex. "Vehicle".
-- `Metadata.BranchId`: ID:t för den specifika enheten eller filialen.
-- `Metadata.SortOrder`: Ordningen bilderna ska visas i (0 är först).
+- `Metadata.Purpose`: The purpose of the images, e.g., "Vehicle".
+- `Metadata.BranchId`: The ID for the specific branch or unit.
+- `Metadata.SortOrder`: The display order of the images (0 is first).
 
-**Svar:**
-Du får tillbaka ett container-ID (UUID), exempel:
+**Response:**
+You will receive a container ID (UUID), for example:
 
 ```
 0316f21d-51cf-441d-bfef-cf90d73178a5
@@ -27,22 +26,22 @@ Du får tillbaka ett container-ID (UUID), exempel:
 
 ---
 
-### Steg 2: Ladda upp bilder
+### Step 2: Upload images
 
-När du skapat containern laddar du upp varje bild separat.
+After creating the container, upload each image individually.
 
 ```bash
 curl --location 'https://api.wayke.se/media/v2/panorama-image/<container-id>' \
 --header 'Authorization: Bearer ••••••' \
---form 'File=@"/sökväg/till/din/bild1.webp"' \
+--form 'File=@"/path/to/your/image1.webp"' \
 --form 'SortOrder="0"'
 ```
 
-- Byt ut `<container-id>` mot det ID du fick från steg 1.
-- Ange sökvägen till din bildfil.
-- `SortOrder` anger ordning (första bilden är normalt 0).
+- Replace `<container-id>` with the ID obtained from step 1.
+- Provide the file path to your image.
+- `SortOrder` indicates the order (the first image is typically 0).
 
-**Svar:**
+**Response:**
 
 ```json
 {
@@ -51,13 +50,13 @@ curl --location 'https://api.wayke.se/media/v2/panorama-image/<container-id>' \
 }
 ```
 
-Upprepa detta steg för varje panorama-bild du vill ladda upp. Spara varje bilds URL till nästa steg.
+Repeat this step for each panorama image you want to upload. Save each image URL for the next step.
 
 ---
 
-### Steg 3: Koppla ihop bilderna med ett fordon
+### Step 3: Associate images with a vehicle
 
-Slutligen måste du binda bilderna till ett specifikt fordon.
+Finally, you must link the images to a specific vehicle.
 
 ```bash
 curl --location --request PUT 'https://dealer-api.wayke.se/vehicle/<vehicle-id>/media' \
@@ -75,7 +74,7 @@ curl --location --request PUT 'https://dealer-api.wayke.se/vehicle/<vehicle-id>/
 }'
 ```
 
-- Byt ut `<vehicle-id>` mot ID:t för det aktuella fordonet.
-- Ange URL:erna från varje uppladdad bild från steg 2.
+- Replace `<vehicle-id>` with the ID of the vehicle.
+- Provide URLs from each uploaded image from step 2.
 
-När detta är klart är bilderna kopplade till fordonet och redo att användas på plattformen.
+Once this step is completed, the images are associated with the vehicle and ready for use on the platform.
