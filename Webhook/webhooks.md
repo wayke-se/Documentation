@@ -21,9 +21,7 @@ Wayke supports various webhook events, including but not limited to:
 - **New Message:** Triggered when a new message is received.
 - **New Incoming Vehicle for Purchase** Triggered when a new vehicle for purhase arrives to the branch 
 - **New Order:** Triggered when a new order is created.
-- **New Lead from Valuation Widget:** Triggered when a new lead is generated from the valuation widget.
-
-
+- **New Lead:** Triggered by leads from CTA-buttons ("E-mail" and "Call me") and  from the Valuation Widget.
 
 ## Webhook Payload Examples
 
@@ -220,7 +218,7 @@ Below are the example payloads for each type of webhook event:
     }
 }
 ```
-### New Lead from Valuation Widget
+### New Lead from valuation widget
 ```json
 {
     "branch": {
@@ -270,6 +268,79 @@ Below are the example payloads for each type of webhook event:
         ],
         "type": "registrationOfInterestToSell",
         "createdAt": "2023-11-07T08:19:45.7867015Z"
+    }
+}
+```
+
+### New Lead from cta buttons 'call me' or 'email'
+```json
+{
+    "branch": {
+        "id": "bbbbbbbb-cccc-1234-5678-eab5a6e80b91"
+    },
+    "subject": {
+        "registrationNumber": "ABC321",
+        "vehicleIdentificationNumber": "5YJ3E7EB8KF111111",
+        "id": "12345678-abcd-1234-1234-123412341234"
+    },
+    "vehicle": {
+        "registrationNumber": "ABC321",
+        "mileage": 10034,
+        "manufacturer": "Tesla",
+        "modelSeries": "Model 3",
+        "modelName": "",
+        "modelYear": 2019,
+        "vinNumber": "5YJ3E7EB8KF111111"
+    },
+    "lead": {
+        "id": "aaaaaaaa-cecd-44cb-acac-111111111",
+        "contact": {
+            "firstName": "John",
+            "lastName": "Doe",
+            "phoneNumber": "0733121212",
+            "email": "J.doe@gmail.com"
+        },
+        "metadata": [
+            {
+                "key": "source",
+                "value": "test.wayketech.se"
+            },
+            {
+                "key": "sourceMechanism",
+                "value": "cta.email" /* either cta.email or cta.callme */
+            },
+            {
+                "key": "itemForSaleId",
+                "value": "12345678-abcd-1234-1234-123412341234"
+            },
+            {
+                "key": "message",
+                "value": "This is the message"
+            },
+            {
+                "key": "tradeInCarMileage",
+                "value": "5000"
+            },
+            {
+                "key": "registrationNumber",
+                "value": "ABC123"
+            },
+            {
+                "key": "readingUnit",
+                "value": "ScandinavianMile"
+            },
+            {
+                "key": "registrationNumberForSale",
+                "value": "ABC321"
+            },
+            {
+                "key": "vinForSale",
+                "value": "5YJ3E7EB8KF111111"
+            }
+        ],
+        "type": "registrationOfInterestToBuy",
+        "createdAt": "2025-08-19T12:50:20.2101844Z",
+        "status": "new"
     }
 }
 ```
