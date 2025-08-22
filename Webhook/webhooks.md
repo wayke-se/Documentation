@@ -21,7 +21,7 @@ Wayke supports various webhook events, including but not limited to:
 - **New Message:** Triggered when a new message is received.
 - **New Incoming Vehicle for Purchase** Triggered when a new vehicle for purhase arrives to the branch 
 - **New Order:** Triggered when a new order is created.
-- **New Lead:** Triggered by leads from CTA-buttons ("E-mail" and "Call me") and  from the Valuation Widget.
+- **New Lead:** Triggered by leads from CTA-buttons ("E-mail" and "Call me"), incomming call from generated numbers (Accessed through CTA button "Call"), and from the Valuation Widget.
 
 ## Webhook Payload Examples
 
@@ -342,6 +342,102 @@ Below are the example payloads for each type of webhook event:
         "createdAt": "2025-08-19T12:50:20.2101844Z",
         "status": "new"
     }
+}
+```
+### New lead from incoming call
+```json
+{
+  "branch": {
+    "id": "27b1c68e-41a5-4141-aace-88dee0b619b0"
+  },
+  "subject": {
+    "registrationNumber": "ABC123",
+    "vehicleIdentificationNumber": "YV1PZA8UCK1234567",
+    "id": "e5d17bce-1234-5678-aaaa-64f1e152245f"
+  },
+  "vehicle": {
+    "registrationNumber": "ABC123",
+    "mileage": 500,
+    "manufacturer": "Volvo",
+    "modelSeries": "V90",
+    "modelName": "",
+    "modelYear": 2019,
+    "vinNumber": "YV1PZA8UCK1234567"
+  },
+  "lead": {
+    "id": "e3534c36-ccbf-4c47-9614-139fa976e59e",
+    "contact": {
+      "firstName": "Unknown",
+      "lastName": "Caller",
+      "phoneNumber": "+46733263937",
+      "email": ""
+    },
+    "metadata": [
+      {
+        "key": "duration",
+        "value": "0"
+      },
+      {
+        "key": "answered",
+        "value": "0" /* 0 if unanswered, 1 if answered */
+      },
+      {
+        "key": "channel",
+        "value": "Direct"
+      },
+      {
+        "key": "referrer",
+        "value": ""
+      },
+      {
+        "key": "url",
+        "value": "https://wayke.se/objekt/e5d17bce-1234-5678-aaaa-64f1e152245f/volvo-v90-cross-country-fdsafdsafdsafdsa-automat"
+      },
+      {
+        "key": "itemForSaleId",
+        "value": "e5d17bce-1234-5678-aaaa-64f1e152245f"
+      },
+      {
+        "key": "registrationNumberForSale",
+        "value": "ABC123"
+      },
+      {
+        "key": "fsid",
+        "value": "567587846"
+      },
+      {
+        "key": "event_type",
+        "value": "0"
+      },
+      {
+        "key": "start",
+        "value": "2025-08-21 11:57:12"
+      },
+      {
+        "key": "details",
+        "value": "wayke.se"
+      },
+      {
+        "key": "desc",
+        "value": "test description"
+      },
+      {
+        "key": "source",
+        "value": "wayke.se"
+      },
+      {
+        "key": "sourceMechanism",
+        "value": "freespee.call"
+      },
+      {
+        "key": "vinForSale",
+        "value": "YV1PZA8UCK1234567"
+      }
+    ],
+    "type": "registrationOfInterestToBuy",
+    "createdAt": "2025-08-21T11:57:18.5608045Z",
+    "status": "new"
+  }
 }
 ```
 
