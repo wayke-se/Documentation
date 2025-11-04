@@ -19,9 +19,9 @@ Wayke supports various webhook events, including but not limited to:
 - [**Status Change in Process Step:**](#status-change-on-process-step) Triggered when there is a status change in any process step.
 - [**Vehicle Updated:**](#status-change-on-process-step) Triggered when there are updates to vehicle data.
 - [**New Message:**](#new-message) Triggered when a new message is received.
-- **New Incoming Vehicle for Purchase**Triggered when a new vehicle for purhase arrives to the branch 
-- [**New Order:**](#new-order) Triggered when a new order is created.
-- [**New Lead:**](#new-lead) Triggered by leads from CTA-buttons ("E-mail" and "Call me"), incomming call from generated numbers (Accessed through CTA button "Call"), and from the Valuation Widget.
+- **New Incoming Vehicle for Purchase** Triggered when a new vehicle for purchase arrives to the branch 
+- [**New Order:**](#new-incoming-ecom-order) Triggered when a new order is created.
+- [**New Lead:**](#new-lead) Triggered by leads from CTA-buttons ("E-mail" and "Call me"), incoming call from generated numbers (Accessed through CTA button "Call"), and from the Valuation Widget.
 
 ## Webhook Payload Examples
 
