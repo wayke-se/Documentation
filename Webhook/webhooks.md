@@ -303,7 +303,7 @@ Below are the example payloads for each type of webhook event:
         "metadata": [
             {
                 "key": "source",
-                "value": "test.wayketech.se"
+                "value": "wayke.se"
             },
             {
                 "key": "sourceMechanism",
