@@ -16,12 +16,12 @@ To set up a webhook in Wayke, follow these steps:
 
 Wayke supports various webhook events, including but not limited to:
 
-- **Status Change in Process Step:** Triggered when there is a status change in any process step.
-- **Vehicle Updated:** Triggered when there are updates to vehicle data.
-- **New Message:** Triggered when a new message is received.
-- **New Incoming Vehicle for Purchase** Triggered when a new vehicle for purhase arrives to the branch 
-- **New Order:** Triggered when a new order is created.
-- **New Lead:** Triggered by leads from CTA-buttons ("E-mail" and "Call me"), incomming call from generated numbers (Accessed through CTA button "Call"), and from the Valuation Widget.
+- [**Status Change in Process Step:**](#status-change-on-process-step) Triggered when there is a status change in any process step.
+- [**Vehicle Updated:**](#status-change-on-process-step) Triggered when there are updates to vehicle data.
+- [**New Message:**](#new-message) Triggered when a new message is received.
+- **New Incoming Vehicle for Purchase** Triggered when a new vehicle for purchase arrives to the branch 
+- [**New Order:**](#new-incoming-ecom-order) Triggered when a new order is created.
+- [**New Lead:**](#new-lead) Triggered by leads from CTA-buttons ("E-mail" and "Call me"), incoming call from generated numbers (Accessed through CTA button "Call"), and from the Valuation Widget.
 
 ## Webhook Payload Examples
 
@@ -218,7 +218,20 @@ Below are the example payloads for each type of webhook event:
     }
 }
 ```
-### New Lead from valuation widget
+### New Lead
+Depending on the `lead.type` and  `lead.metadata["sourceMechanism"].value` values, the payload differs slightly. To identify different payload types, refer to the table below:  
+| User action | lead type | source mechanism key | 
+| --- | --- | --- | 
+| Sends contact information through valuation widget | `registrationOfInterestToSell` | - |
+| Clicks the CTA button "Call Me" | `registrationOfInterestToBuy` | `cta.callme` | 
+| Clicks the CTA button "Email" | `registrationOfInterestToBuy` | `cta.email` | 
+| Clicks the CTA button "Call" | `registrationOfInterestToBuy` | `freespee.call` | 
+
+For CTA actions, ad information is found in the `subject` and `vehicle` fields. If a trade-in is provided, the registration number can be found in `lead.metadata["registrationNumber"].value`
+
+Below are three examples.
+
+#### New Lead from valuation widget
 ```json
 {
     "branch": {
@@ -272,7 +285,7 @@ Below are the example payloads for each type of webhook event:
 }
 ```
 
-### New Lead from cta buttons 'call me' or 'email'
+#### New Lead from cta buttons 'call me' or 'email'
 ```json
 {
     "branch": {
@@ -303,7 +316,7 @@ Below are the example payloads for each type of webhook event:
         "metadata": [
             {
                 "key": "source",
-                "value": "test.wayketech.se"
+                "value": "wayke.se"
             },
             {
                 "key": "sourceMechanism",
@@ -344,7 +357,7 @@ Below are the example payloads for each type of webhook event:
     }
 }
 ```
-### New lead from incoming call
+#### New lead from incoming call
 ```json
 {
   "branch": {
